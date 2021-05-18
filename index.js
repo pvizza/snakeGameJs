@@ -18,6 +18,7 @@ let controls = {
   point: { x: 0, y: 250 },
   growth: 0,
   play: false,
+  score: 0,
 };
 
 const move = function () {
@@ -54,7 +55,17 @@ const move = function () {
   }
 
   if (food) {
-    controls.growth += 10;
+    controls.growth += 1;
+    controls.score += 50;
+    if (controls.score >= 100) {
+      controls.growth += 5;
+    }
+    if (controls.score >= 300) {
+      controls.growth += 10;
+    }
+    if (controls.score >= 500) {
+      controls.growth += 30;
+    }
     eating();
   }
 
@@ -65,13 +76,15 @@ const move = function () {
 
   requestAnimationFrame(snakeColor);
 
+  document.getElementById('score').innerHTML = 'Puntuacion: ' + controls.score;
+
   setTimeout(move, 80);
 };
 
 // compare whether the shock of the wall of the snake or against itself
 const lostGame = function () {
   const init = controls.snake[0];
-  if (init.x < 0 || init.x >= 500 / 5 || init.y < 0 || init.y >= 500 / 5) {
+  if (init.x < 0 || init.x >= 500 / 8 || init.y < 0 || init.y >= 500 / 8) {
     return true;
   }
   for (let idx = 1; idx < controls.snake.length; idx++) {
@@ -133,6 +146,7 @@ const newGame = function () {
     point: { x: 0, y: 250 },
     growth: 0,
     play: false,
+    score: 0,
   };
   const position = newPoint();
   const snake = controls.snake[0];
