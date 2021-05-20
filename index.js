@@ -7,19 +7,23 @@ const Direction = {
   w: [0, -1],
   d: [1, 0],
   a: [-1, 0],
-  goDown: [0, 1],
-  goUp: [0, -1],
-  goRight: [1, 0],
-  goLeft: [-1, 0],
+  ArrowDown: [0, 1],
+  ArrowUp: [0, -1],
+  ArrowRight: [1, 0],
+  ArrowLeft: [-1, 0],
 };
 let controls = {
   directions: { x: 1, y: 0 },
-  snake: [{ x: 0, y: 50 }],
-  point: { x: 0, y: 250 },
+  snake: [{ x: 0, y: 0 }],
+  point: { x: 0, y: 0 },
   growth: 0,
   play: false,
   score: 0,
 };
+
+let speed = 8;
+let space = 500;
+let run = 80;
 
 const move = function () {
   const bodySnake = {};
@@ -73,18 +77,22 @@ const move = function () {
     controls.snake.push(bodySnake);
     controls.growth -= 1;
   }
+  setTimeout(move, run);
 
   requestAnimationFrame(snakeColor);
 
   document.getElementById('score').innerHTML = 'Puntuacion: ' + controls.score;
-
-  setTimeout(move, 80);
 };
 
 // compare whether the shock of the wall of the snake or against itself
 const lostGame = function () {
   const init = controls.snake[0];
-  if (init.x < 0 || init.x >= 500 / 8 || init.y < 0 || init.y >= 500 / 8) {
+  if (
+    init.x < 0 ||
+    init.x >= space / speed ||
+    init.y < 0 ||
+    init.y >= space / speed
+  ) {
     return true;
   }
   for (let idx = 1; idx < controls.snake.length; idx++) {
@@ -106,7 +114,7 @@ document.onkeydown = (e) => {
 };
 
 const snakeColor = function () {
-  context.clearRect(0, 0, 500, 500);
+  context.clearRect(0, 0, space, space);
   for (let idx = 0; idx < controls.snake.length; idx++) {
     const { x, y } = controls.snake[idx];
     players('green', x, y);
@@ -117,9 +125,11 @@ const snakeColor = function () {
   players('white', point.x, point.y);
 };
 
+let wh = 5;
+
 const players = function (color, x, y) {
   context.fillStyle = color; //color snake
-  context.fillRect(x * 8, y * 8, 5, 5); // position x, y and width, heigth
+  context.fillRect(x * speed, y * speed, wh, wh); // position x, y and width, heigth
 };
 
 const eating = function () {
@@ -127,14 +137,15 @@ const eating = function () {
   const food = controls.point;
   food.x = dam.x;
   food.y = dam.y;
+  run = run - 3;
 };
 
 // this sum one px in bodySnake
 const newPoint = function () {
   const directionSnake = Object.values(Direction);
   return {
-    x: parseInt((Math.random() * 500) / 8),
-    y: parseInt((Math.random() * 500) / 8),
+    x: parseInt((Math.random() * space) / speed),
+    y: parseInt((Math.random() * space) / speed),
     j: directionSnake[parseInt(Math.random() * 7)],
   };
 };
@@ -142,7 +153,7 @@ const newPoint = function () {
 const newGame = function () {
   controls = {
     directions: { x: 1, y: 0 },
-    snake: [{ x: 0, y: 50 }],
+    snake: [{ x: 0, y: 0 }],
     point: { x: 0, y: 250 },
     growth: 0,
     play: false,
@@ -159,6 +170,7 @@ const newGame = function () {
   food.x = dam.x;
   food.y = dam.y;
   controls.play = true;
+  run = 80;
 };
 
 window.onload = function () {
