@@ -2,7 +2,7 @@ let papel = document.querySelector('canvas');
 let context = papel.getContext('2d');
 
 //directions snake
-const Direction = {
+let Direction = {
   s: [0, 1],
   w: [0, -1],
   d: [1, 0],
@@ -11,6 +11,10 @@ const Direction = {
   ArrowUp: [0, -1],
   ArrowRight: [1, 0],
   ArrowLeft: [-1, 0],
+  8: [0, 1],
+  2: [0, -1],
+  6: [1, 0],
+  4: [-1, 0],
 };
 let controls = {
   directions: { x: 1, y: 0 },
@@ -24,6 +28,43 @@ let controls = {
 let speed = 8;
 let space = 500;
 let run = 80;
+
+function clickUp() {
+  let moves = Direction.ArrowUp;
+  const x = moves[0];
+  const y = moves[1];
+  if (-x !== controls.directions.x && -y !== controls.directions.y) {
+    controls.directions.x = x;
+    controls.directions.y = y;
+  }
+}
+function clickRight() {
+  let moves = Direction.ArrowRight;
+  const x = moves[0];
+  const y = moves[1];
+  if (-x !== controls.directions.x && -y !== controls.directions.y) {
+    controls.directions.x = x;
+    controls.directions.y = y;
+  }
+}
+function clickLeft() {
+  let moves = Direction.ArrowLeft;
+  const x = moves[0];
+  const y = moves[1];
+  if (-x !== controls.directions.x && -y !== controls.directions.y) {
+    controls.directions.x = x;
+    controls.directions.y = y;
+  }
+}
+function clickDown() {
+  let moves = Direction.ArrowDown;
+  const x = moves[0];
+  const y = moves[1];
+  if (-x !== controls.directions.x && -y !== controls.directions.y) {
+    controls.directions.x = x;
+    controls.directions.y = y;
+  }
+}
 
 const move = function () {
   const bodySnake = {};
@@ -107,6 +148,7 @@ document.onkeydown = (e) => {
   let moves = Direction[e.key];
   const x = moves[0];
   const y = moves[1];
+
   if (-x !== controls.directions.x && -y !== controls.directions.y) {
     controls.directions.x = x;
     controls.directions.y = y;
@@ -117,12 +159,12 @@ const snakeColor = function () {
   context.clearRect(0, 0, space, space);
   for (let idx = 0; idx < controls.snake.length; idx++) {
     const { x, y } = controls.snake[idx];
-    players('green', x, y);
+    players('black', x, y);
   }
 
   const point = controls.point;
 
-  players('white', point.x, point.y);
+  players('black', point.x, point.y);
 };
 
 let wh = 5;

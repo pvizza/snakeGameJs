@@ -8,9 +8,46 @@
     <title>Snake Js</title>
   </head>
   <body>
-    <h2 id="score"></h2>
     <div class="main">
-      <canvas width="500" height="500" class="anime"></canvas>
+      <div class="fone">
+        <h2 class="brand">lokia</h2>
+        <!-- <img
+          src="https://fontmeme.com/permalink/210521/6d2b6846ad0ebf2532b8d7d9c3f9f907.png"
+          alt="snake title"
+        /> -->
+        <h2 id="score"></h2>
+        <canvas width="500" height="500" class="anime"></canvas>
+        <div class="foneNumber">
+          <div class="content">
+            <div class="pr lat">1</div>
+            <div class="pr mid">2 / w</div>
+            <div class="pr tal">3</div>
+          </div>
+          <div class="content">
+            <div class="pr lat">4 / a</div>
+            <div class="pr mid">5</div>
+            <div class="pr tal">6 / d</div>
+          </div>
+          <div class="content">
+            <div class="pr lat">7</div>
+            <div class="pr mid">8 / s</div>
+            <div class="pr tal">9</div>
+          </div>
+          <div class="content">
+            <div class="pr lat">play</div>
+            <div class="pr mid">0</div>
+            <div class="pr tal">pause</div>
+          </div>
+        </div>
+        <div class="mobileArrows">
+          <div onclick="clickUp()" class="arrow u">⬆</div>
+          <div class="midArrows">
+            <div onclick="clickLeft()" class="arrow l">⬅</div>
+            <div onclick="clickRight()" class="arrow r">➡</div>
+          </div>
+          <div onclick="clickDown()" class="arrow d">⬇</div>
+        </div>
+      </div>
     </div>
     <script src="./index.js"></script>
   </body>
