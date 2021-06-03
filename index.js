@@ -23,6 +23,7 @@ let controls = {
   growth: 0,
   play: false,
   score: 0,
+  pause: false,
 };
 
 let speed = 8;
@@ -69,7 +70,9 @@ function clickDown() {
 const move = function () {
   const bodySnake = {};
   const init = controls.snake[0];
+
   // copy last elemnt in init snake
+
   Object.assign(bodySnake, controls.snake[controls.snake.length - 1]);
 
   // agree skake point
@@ -118,12 +121,25 @@ const move = function () {
     controls.snake.push(bodySnake);
     controls.growth -= 1;
   }
-  setTimeout(move, run);
+
+  let set = setTimeout(move, run);
+
+  if (controls.pause) {
+    clearTimeout(set);
+  }
 
   requestAnimationFrame(snakeColor);
 
   document.getElementById('score').innerHTML = 'Puntuacion: ' + controls.score;
 };
+
+function pause() {
+  controls.pause = true;
+}
+
+function plays() {
+  controls.ploy = true;
+}
 
 // compare whether the shock of the wall of the snake or against itself
 const lostGame = function () {
@@ -179,7 +195,7 @@ const eating = function () {
   const food = controls.point;
   food.x = dam.x;
   food.y = dam.y;
-  run = run - 3;
+  run -= 3;
 };
 
 // this sum one px in bodySnake
