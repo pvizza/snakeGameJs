@@ -57,7 +57,7 @@ body {
 }
 
 .main .fone .foneNumber .content .pr:active {
-  background-color: rgb(184, 184, 184);
+  background-color: gray;
 }
 
 .main .fone .foneNumber .content .pr.mid {
@@ -104,7 +104,7 @@ body {
   }
 
   .main .fone .arrow:active {
-    background-color: rgb(184, 184, 184);
+    background-color: gray);
   }
 
   .main .fone .mobileArrows .midArrows {
