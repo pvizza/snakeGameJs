@@ -23,7 +23,6 @@ let controls = {
   growth: 0,
   play: false,
   score: 0,
-  pause: false,
 };
 
 let speed = 8;
