@@ -164,7 +164,7 @@ body {
   }
 }
 
-/* @media (min-height: 600px) and (max-height: 700px) {
+@media (min-height: 600px) and (max-height: 700px) {
   .main .fone .mobileArrows {
     width: 60%;
     padding: 15px;
@@ -173,4 +173,4 @@ body {
     align-items: center;
     font-size: 30px;
   }
-} */
+}
