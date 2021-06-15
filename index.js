@@ -25,6 +25,8 @@ let controls = {
   score: 0,
 };
 
+let prueba = 'das'
+
 let speed = 8;
 let space = 500;
 let run = 80;
