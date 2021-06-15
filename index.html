@@ -9,6 +9,13 @@
   </head>
   <body>
     <div class="main">
+      <div class="modalLogin" id="modalLogin">
+        <div class="modalInput">
+          <h3>Elige tu nombre de jugador</h3>
+          <input name="player" />
+          <button onclick="openModal()">Ingresar</button>
+        </div>
+      </div>
       <div class="fone">
         <h2 class="brand">lokia</h2>
         <div class="gCanvas">
@@ -46,6 +53,7 @@
           <div onclick="clickDown()" class="arrow d">⬇</div>
         </div>
       </div>
+      <div id="modalOver" class="modalOver"></div>
     </div>
     <script src="./index.js"></script>
   </body>
