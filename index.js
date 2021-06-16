@@ -25,12 +25,12 @@ let controls = {
   score: 0,
 };
 
-const open = document.getElementById('modalLogin');
-const close = document.getElementById('modalOver');
+const open = document.getElementById("modalLogin");
+const close = document.getElementById("modalOver");
 
 function openModal() {
-  open.classList.add('desactive');
-  close.classList.remove('modalOver');
+  open.classList.add("desactive");
+  close.classList.remove("modalOver");
 }
 
 let speed = 8;
