@@ -12,7 +12,7 @@
       <div class="modalLogin" id="modalLogin">
         <div class="modalInput">
           <h3>Elige tu nombre de jugador</h3>
-          <input name="player" />
+          <input onchange="limit()" maxlength="20" name="player" />
           <button onclick="openModal()">Ingresar</button>
         </div>
       </div>
