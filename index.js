@@ -1,5 +1,5 @@
-let papel = document.querySelector('canvas');
-let context = papel.getContext('2d');
+let papel = document.querySelector("canvas");
+let context = papel.getContext("2d");
 
 //directions snake
 let Direction = {
@@ -25,18 +25,16 @@ let controls = {
   score: 0,
 };
 
-const open = document.getElementById('modalLogin');
-const close = document.getElementById('modalOver');
+const open = document.getElementById("modalLogin");
+const close = document.getElementById("modalOver");
 
 function openModal() {
-  open.classList.add('desactive');
-  close.classList.remove('modalOver');
+  open.classList.add("desactive");
+  close.classList.remove("modalOver");
 }
 
-function limit(input) {
-  if (input.value < 0) {
-    console.log(1);
-  }
+function limit(e) {
+  console.log(e.target.name);
 }
 // const limitInput = document.querySelectorAll('player');
 
@@ -144,7 +142,7 @@ const move = function () {
 
   requestAnimationFrame(snakeColor);
 
-  document.getElementById('score').innerHTML = 'Puntuacion: ' + controls.score;
+  document.getElementById("score").innerHTML = "Puntuacion: " + controls.score;
 };
 
 function pause() {
@@ -189,12 +187,12 @@ const snakeColor = function () {
   context.clearRect(0, 0, space, space);
   for (let idx = 0; idx < controls.snake.length; idx++) {
     const { x, y } = controls.snake[idx];
-    players('black', x, y);
+    players("black", x, y);
   }
 
   const point = controls.point;
 
-  players('black', point.x, point.y);
+  players("black", point.x, point.y);
 };
 
 let wh = 5;

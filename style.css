@@ -213,6 +213,7 @@ body {
   .main .fone .mobileArrows {
     width: 60%;
     padding: 15px;
+    display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 30px;
