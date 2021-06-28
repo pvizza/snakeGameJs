@@ -1,5 +1,5 @@
-let papel = document.querySelector("canvas");
-let context = papel.getContext("2d");
+let papel = document.querySelector('canvas');
+let context = papel.getContext('2d');
 
 //directions snake
 let Direction = {
@@ -25,18 +25,33 @@ let controls = {
   score: 0,
 };
 
-const open = document.getElementById("modalLogin");
-const close = document.getElementById("modalOver");
+const expresions = {
+  nameUser: /^[a-zA-Z0-9]{4,20}$/,
+};
 
-function openModal() {
-  open.classList.add("desactive");
-  close.classList.remove("modalOver");
-}
+const open = document.getElementById('modalLogin');
+const close = document.getElementById('modalOver');
+const play = document.querySelector('.playerBlue');
+
+let initGame = false;
 
 function limit(e) {
-  console.log(e.target.name);
+  if (expresions.nameUser.test(e.target.value.trim())) {
+    play.classList.add('playerGreen');
+    initGame = true;
+  } else {
+    play.classList.add('playerRed');
+    play.classList.remove('playerBlue');
+    let er = new Error('no se permiten espacios');
+    throw er;
+  }
 }
-// const limitInput = document.querySelectorAll('player');
+function openModal() {
+  if (initGame) {
+    open.classList.add('desactive');
+    close.classList.remove('modalOver');
+  }
+}
 
 let speed = 8;
 let space = 500;
@@ -142,7 +157,7 @@ const move = function () {
 
   requestAnimationFrame(snakeColor);
 
-  document.getElementById("score").innerHTML = "Puntuacion: " + controls.score;
+  document.getElementById('score').innerHTML = 'Puntuacion: ' + controls.score;
 };
 
 function pause() {
@@ -187,12 +202,12 @@ const snakeColor = function () {
   context.clearRect(0, 0, space, space);
   for (let idx = 0; idx < controls.snake.length; idx++) {
     const { x, y } = controls.snake[idx];
-    players("black", x, y);
+    players('black', x, y);
   }
 
   const point = controls.point;
 
-  players("black", point.x, point.y);
+  players('black', point.x, point.y);
 };
 
 let wh = 5;
