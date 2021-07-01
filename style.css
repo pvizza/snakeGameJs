@@ -44,9 +44,6 @@ body {
   transition: 0.5s ease-in-out;
 }
 
-/* #modalOver {
-  opacity: 0;
-} */
 #modalOver.modalOver {
   position: fixed;
   top: 0;
@@ -55,6 +52,11 @@ body {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 1;
+}
+
+.main .modalLogin .modalInput #errorMessage {
+  color: rgb(240, 8, 8);
+  display: block;
 }
 
 .main .modalLogin .modalInput .playerBlue:focus {
