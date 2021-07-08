@@ -1,5 +1,5 @@
-let papel = document.querySelector("canvas");
-let context = papel.getContext("2d");
+let papel = document.querySelector('canvas');
+let context = papel.getContext('2d');
 
 //directions snake
 let Direction = {
@@ -29,44 +29,44 @@ const expresions = {
   nameUser: /^[a-zA-Z0-9]{4,20}$/,
 };
 
-const open = document.getElementById("modalLogin");
-const close = document.getElementById("modalOver");
-const play = document.querySelector(".playerBlue");
-const form = document.getElementById("form");
-const errorElement = document.getElementById("errorMessage");
-const nameForm = document.getElementById("name");
+const open = document.getElementById('modalLogin');
+const close = document.getElementById('modalOver');
+const play = document.querySelector('.playerBlue');
+const form = document.getElementById('form');
+const errorElement = document.getElementById('errorMessage');
+const nameForm = document.getElementById('name');
 
 function limit(e) {
   if (expresions.nameUser.test(e.target.value.trimEnd())) {
-    play.classList.add("playerGreen");
+    play.classList.add('playerGreen');
   }
 }
 
 let messages = [];
 
 function sendForm(e) {
-  if (nameForm.value === "" || nameForm.value === null) {
-    messages.push("Debes ingresar un nombre para jugar");
-    play.classList.add("playerRed");
-    play.classList.remove("playerGreen");
+  if (nameForm.value === '' || nameForm.value === null) {
+    messages.push('Debes ingresar un nombre para jugar');
+    play.classList.add('playerRed');
+    play.classList.remove('playerGreen');
   } else if (nameForm.value.length < 4) {
     messages.push(
-      "El nombre debe contener un minimo de 4 y un maximo de 20 caracteres"
+      'El nombre debe contener un minimo de 4 y un maximo de 20 caracteres'
     );
-    play.classList.add("playerRed");
-    play.classList.remove("playerGreen");
+    play.classList.add('playerRed');
+    play.classList.remove('playerGreen');
   } else if (!expresions.nameUser.test(nameForm.value.trimEnd())) {
-    messages.push("Solo puedes usar letras y numeros sin espacios");
-    play.classList.add("playerRed");
-    play.classList.remove("playerGreen");
+    messages.push('Solo puedes usar letras y numeros sin espacios');
+    play.classList.add('playerRed');
+    play.classList.remove('playerGreen');
   } else {
-    messages.push("");
-    open.classList.add("desactive");
-    close.classList.remove("modalOver");
+    messages.push('');
+    open.classList.add('desactive');
+    close.classList.remove('modalOver');
   }
 
   if (messages.length > 0) {
-    errorElement.innerText = messages.join(", ");
+    errorElement.innerText = messages.join(', ');
     messages.length = 0;
   }
 
@@ -177,7 +177,7 @@ const move = function () {
 
   requestAnimationFrame(snakeColor);
 
-  document.getElementById("score").innerHTML = "Puntuacion: " + controls.score;
+  document.getElementById('score').innerHTML = 'Puntuacion: ' + controls.score;
 };
 
 function pause() {
@@ -222,12 +222,12 @@ const snakeColor = function () {
   context.clearRect(0, 0, space, space);
   for (let idx = 0; idx < controls.snake.length; idx++) {
     const { x, y } = controls.snake[idx];
-    players("black", x, y);
+    players('black', x, y);
   }
 
   const point = controls.point;
 
-  players("black", point.x, point.y);
+  players('black', point.x, point.y);
 };
 
 let wh = 5;

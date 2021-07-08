@@ -10,7 +10,12 @@
   <body>
     <div class="main">
       <div class="modalLogin" id="modalLogin">
-        <form id="form" onsubmit="sendForm(event)">
+        <form
+          action="http://localhost:3000/agrega"
+          method="POST"
+          id="form"
+          onsubmit="sendForm(event)"
+        >
           <div class="modalInput">
             <h3>Ingresa un nombre para jugar</h3>
             <input
@@ -20,10 +25,14 @@
               name="player"
               id="name"
             />
-            <button>Ingresar</button>
+            <button type="submit">Ingresar</button>
             <small id="errorMessage"></small>
           </div>
         </form>
+        <!-- <form action="http://localhost:3000/agrega" method="POST">
+          <input type="text" name="prueba" />
+          <button type="submit">enviar</button>
+        </form> -->
       </div>
       <div class="fone">
         <h2 class="brand">lokia</h2>
