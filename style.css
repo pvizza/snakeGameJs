@@ -20,7 +20,7 @@ body {
   font-family: system-ui;
 }
 
-.main .modalLogin {
+/* .main .modalLogin {
   position: fixed;
   top: 30%;
   transform: scale(2);
@@ -52,7 +52,7 @@ body {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 1;
-}
+} */
 
 .main .modalLogin .modalInput #errorMessage {
   color: rgb(240, 8, 8);
